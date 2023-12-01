@@ -183,16 +183,16 @@ class Calculator(num1:Int,num2:Int,oper:String){
     }
 }
 
-
-/*
 fun main() {
+    //fun 이름을 main으로 하면 작동하고 다른걸로 하면 작동안함 왜?
     var temp = Calculator(1,100,"/")
     //클래스의 생성자와 프로퍼티에 값을 부여한다, 생성자와 프로퍼티가 연결되어 있어 생성자에 값을 부여하면 프로퍼티에 들어간다
     temp.cal()
     temp.calWhen()
     //클래스의 계산기능인 cal메서드를 호출해서 계산한다
 }
-*/
+
+
 
 /* 수정 전 방식, 이거 왜 안되는지 모르겠음
 class Calculator {
@@ -222,7 +222,7 @@ override fun onCreate(savedInstanceState: Bundle?) {
 */
 
 
-/* 이것도 왜 안되는지 모르겠음
+/* 이것도 왜 안되는지 모르겠음 -> 이건 fun 이름을 main으로 바꾸면 됨
 fun export() {
     var temp = Calculator()
     temp.num1 = 100
