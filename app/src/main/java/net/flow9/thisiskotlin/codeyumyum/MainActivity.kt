@@ -135,11 +135,11 @@ fun main() {
 //시도 4 -> 수를 대입하지 않고 지정 값을 계산해 Int로 rex가 나오지만 소수점 생략함 = 성공
 
 
-class Calculator(num1:Int,num2:Int,oper:String){
+class Calculator(){
     //프로퍼티 초기화, 임시값 및 파라미터 부여
-    var num1 : Int = num1
-    var num2 : Int = num2
-    var oper : String = oper
+    var num1 : Int = 0
+    var num2 : Int = 0
+    var oper : String = "+"
     //인터넷에서 헤더의 프라이머리 생성자와 프로퍼티를 연결해야 한다고 함
 
     var res : Int = 0
@@ -185,7 +185,12 @@ class Calculator(num1:Int,num2:Int,oper:String){
 
 fun main() {
     //fun 이름을 main으로 하면 작동하고 다른걸로 하면 작동안함 왜?
-    var temp = Calculator(1,100,"/")
+    //main은 하나만 있어야 하고, 여러개 사용할 수 없다.
+    //main하고 원하는 거 쓸 수 있다.
+    var temp = Calculator()
+    temp.num1 = 2
+    temp.num2 = 3
+    temp.oper = "*"
     //클래스의 생성자와 프로퍼티에 값을 부여한다, 생성자와 프로퍼티가 연결되어 있어 생성자에 값을 부여하면 프로퍼티에 들어간다
     temp.cal()
     temp.calWhen()
