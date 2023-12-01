@@ -2,6 +2,8 @@ package net.flow9.thisiskotlin.codeyumyum
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
+import kotlin.math.log
 
 // Level 1 - 기초 문법, 계산기
 // 더하기, 빼기, 나누기, 곱하기 연산을 수행할 수 있는 Calculator 클래스를 만들고, 클래스를 이용하여 연산을 진행하고 출력하기
@@ -44,7 +46,7 @@ fun main() {
 }
 */
 
-/* 시도 2 -> 수를 대입하지 않고, 지정 값을 계산해 Double로 answer가 나오지만 정상적인 계산
+/* 시도 2 -> 수를 대입하지 않고, 지정 값을 계산해 Double로 answer가 나오지만 정상적인 계산 = 성공
 // 조원들도 level 1은 변수에 수를 지정했다고 한다
 fun main() {
     println("----------------------------------------")
@@ -73,33 +75,9 @@ fun main() {
     }
     println("${inputNum1}${operator}${inputNum2} = ${answer} 입니다.")
 }
- */
-
-/*
-// 시도 3 -> ??
-fun main() {
-    println("----------------------------------------")
-    println("----------------- 계산기 -----------------")
-    println("----------------------------------------")
-
-    var answer : Int = 0
-
-    println("[A][?][B]")
-
-    var inputNum1 : Int = 5
-    var operator : String = "+"
-    var inputNum2 : Int = 10
-
-    when(operator){
-        //"+" -> println("${inputNum1}${operator}${inputNum2} = ${inputNum1+inputNum2}")
-        "+" -> answer = (inputNum1+inputNum2)
-    }
-}
 */
 
-// Level 2 - 기초 문법, 계산기
-// Lv1에서 만든 Calculator 클래스에 출력 이후 추가 연산을 가능하도록 코드를 추가하고, 연산 진행 후 출력하기
-
+/*시도 3 -> ??
 class Calculator {
     var firstNum : Int = "0"
     var secondNum : Int = "0"
@@ -113,7 +91,7 @@ class Calculator {
                 result = firstNum + secondNum
             }
             "-" -> {
-                result = firstNum - secondNum.
+                result = firstNum - secondNum
             }
             "*" -> {
                 result = firstNum * secondNum
@@ -138,4 +116,122 @@ fun main() {
     println("----------------- 계산기 -----------------")
     println("----------------------------------------")
 
+    var answer : Int = 0
+
+    println("[A][?][B]")
+
+    var inputNum1 : Int = 5
+    var operator : String = "+"
+    var inputNum2 : Int = 10
+
+    when(operator){
+        //"+" -> println("${inputNum1}${operator}${inputNum2} = ${inputNum1+inputNum2}")
+        "+" -> answer = (inputNum1+inputNum2)
+    }
 }
+
+         */
+
+//시도 4 -> 수를 대입하지 않고 지정 값을 계산해 Int로 rex가 나오지만 소수점 생략함 = 성공
+
+
+class Calculator(num1:Int,num2:Int,oper:String){
+    //프로퍼티 초기화, 임시값 및 파라미터 부여
+    var num1 : Int = num1
+    var num2 : Int = num2
+    var oper : String = oper
+    //인터넷에서 헤더의 프라이머리 생성자와 프로퍼티를 연결해야 한다고 함
+
+    var res : Int = 0
+
+    init {
+        println("init은 프라이머리 생성자 초기화")
+        //초기화는 값을 대입해 인스턴스를 생성했다는 말인지?
+        //인터넷에는 불리언값을 사용해 참이 아닌경우 class가 실행되지 않게 하는 것 같다
+    }
+    fun cal() {
+        if(oper == "+"){
+            res = num1 + num2
+        }else if(oper == "-"){
+            res = num1 - num2
+        }else if(oper == "*"){
+            res = num1 * num2
+        }else if(oper == "/"){
+            res = num1 / num2
+        }else {
+            println("유효하지 않는 연산자 입니다.")
+        }
+        println("----------------- 계산기 -----------------")
+        println("if조건문 계산공식:${num1}${oper}${num2}")
+        println("계산결과:${res}")
+        println(" ")
+
+    }
+    fun calWhen() {
+        when(oper) {
+            "+" -> res = num1 + num2
+            "-" -> res = num1 - num2
+            "*" -> res = num1 * num2
+            "/" -> res = num1 / num2
+            else -> println("유효하지 않는 연산자 입니다.")
+        }
+        println("----------------- 계산기 -----------------")
+        println("when조건문 계산공식:${num1}${oper}${num2}")
+        println("계산결과:${res}")
+        println(" ")
+
+    }
+}
+
+
+/*
+fun main() {
+    var temp = Calculator(1,100,"/")
+    //클래스의 생성자와 프로퍼티에 값을 부여한다, 생성자와 프로퍼티가 연결되어 있어 생성자에 값을 부여하면 프로퍼티에 들어간다
+    temp.cal()
+    temp.calWhen()
+    //클래스의 계산기능인 cal메서드를 호출해서 계산한다
+}
+*/
+
+/* 수정 전 방식, 이거 왜 안되는지 모르겠음
+class Calculator {
+    //질문 1 : 여러개의 프로퍼티를 사용하려면 프라이머리 생성자를 꼭 생성해 줘야 하는가?
+    var num1 : Int = 1
+    var num2 : Int = 2
+    var oper : String = "*"
+    //깃북 클래스에서는 이런 식으로 사용했고 정상작동 했는데 왜?
+
+
+    var res : Int = 0
+
+    ...중략...
+
+var temp = Calculator()
+temp.num1 = 100
+temp.num2 = 5
+temp.oper = "*"
+
+temp.cal()
+
+
+//깃북 클래스 실습에는 이게 있었음
+override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setContentView(R.layout.activity_main)
+*/
+
+
+/* 이것도 왜 안되는지 모르겠음
+fun export() {
+    var temp = Calculator()
+    temp.num1 = 100
+    temp.num2 = 5
+    temp.oper = "*"
+
+    temp.cal()
+}
+*/
+
+
+
