@@ -1,5 +1,6 @@
 package net.flow9.thisiskotlin.codeyumyum
 
+import android.hardware.camera2.CameraExtensionSession.StillCaptureLatency
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
@@ -8,7 +9,7 @@ import kotlin.math.log
 // Level 1 - 기초 문법, 계산기
 // 더하기, 빼기, 나누기, 곱하기 연산을 수행할 수 있는 Calculator 클래스를 만들고, 클래스를 이용하여 연산을 진행하고 출력하기
 
-/* 시도 1 -> 수를 대입해서 계산할려고 함 = 실패
+/*//시도 1 -> 수를 대입해서 계산할려고 함 = 실패
 fun main() {
     println("----------------------------------------")
     println("----------------- 계산기 -----------------")
@@ -46,7 +47,7 @@ fun main() {
 }
 */
 
-/* 시도 2 -> 수를 대입하지 않고, 지정 값을 계산해 Double로 answer가 나오지만 정상적인 계산 = 성공
+/*//시도 2 -> 수를 대입하지 않고, 지정 값을 계산해 Double로 answer가 나오지만 정상적인 계산 = 성공
 // 조원들도 level 1은 변수에 수를 지정했다고 한다
 fun main() {
     println("----------------------------------------")
@@ -77,7 +78,7 @@ fun main() {
 }
 */
 
-/*시도 3 -> ??
+/*//시도 3 -> ??
 class Calculator {
     var firstNum : Int = "0"
     var secondNum : Int = "0"
@@ -132,7 +133,7 @@ fun main() {
 
          */
 
-/* 시도 4 -> 수를 대입하지 않고 지정 값을 계산해 Int로 rex가 나오지만 소수점 생략함, 프로퍼티에 인스턴스화 = 성공
+/*//시도 4 -> 수를 대입하지 않고 지정 값을 계산해 Int로 rex가 나오지만 소수점 생략함, 프로퍼티에 인스턴스화 = 성공
 class Calculator(){
     //프로퍼티 초기화, 임시값 및 파라미터 부여
     var num1 : Int = 0
@@ -196,7 +197,7 @@ fun main() {
 }
 */
 
-/* 시도 5 -> 수를 대입하지 않고 지정 값을 계산해 Int로 rex가 나오지만 소수점 생략함, 헤더에 프라이머리 생성자 = 성공
+//시도 5 -> 수를 대입하지 않고 지정 값을 계산해 Int로 rex가 나오지만 소수점 생략함, 헤더에 프라이머리 생성자 = 성공
 
 class Calculator(num1:Int, num2:Int, oper:String){
     //프로퍼티 초기화, 임시값 및 파라미터 부여
@@ -256,14 +257,155 @@ fun main() {
     temp.calWhen()
     //클래스의 계산기능인 cal메서드를 호출해서 계산한다
 }
+
+
+
+
+
+
+
+
+/*fun main() {
+    open class Parents1 {
+        var hello: String = "부모클래스 텍스트"
+        fun sayHello() {
+            println("inheritance, ${hello}")
+        }
+    }
+
+    class Masefse1 : Parents1() {
+        fun myHello() {
+            hello = "자식클래스 텍스트"
+            sayHello()
+        }
+    }
+}*/
+
+/*
+
+fun main() {
+    var bird = Bird("새")
+    var chicken = Chicken("닭", 2)
+    var sparrow = Sparrow("참새", "갈색")
+    var pigeon = Pigeon("비둘기", "서울")
+
+    bird.fly()
+    chicken.fly()
+    sparrow.fly()
+    pigeon.fly()
+}
+
+open class Bird(name:String) {
+    var name: String = ""
+
+    init {
+        // this는 현재 클래스의 상태변수를 의미합니다
+        // var name: String = ""
+        this.name = name
+    }
+
+    open fun fly() {
+        println("${name}은 날아요~")
+    }
+
+}
+
+class Chicken(name: String, age: Int) : Bird(name) {
+    var age:Int = 0
+
+    init {
+        this.age = age
+    }
+
+    override fun fly() {
+//        super객체는 부모의 객체를 의미하며 자동으로 생성됨
+//        즉 부모객체의 fly메소드를 부르는 행위임
+//        필요없으니 주석처리완료
+//        super.fly()
+        println("${age}살의 ${name}가 날아봅니다~ 꼬끼오!")
+    }
+}
+
+class Sparrow(name: String, color: String) : Bird(name) {
+    var color:String = ""
+
+    init {
+        this.color = color
+    }
+
+    override fun fly() {
+//        super객체는 부모의 객체를 의미하며 자동으로 생성됨
+//        즉 부모객체의 fly메소드를 부르는 행위임
+//        필요없으니 주석처리완료
+//        super.fly()
+        println("${color}의 ${name}이 날아봅니다~ 짹짹!")
+    }
+}
+
+class Pigeon(name: String, address: String) : Bird(name) {
+    var address: String = ""
+
+    init {
+        this.address = address
+    }
+
+    override fun fly() {
+//        super객체는 부모의 객체를 의미하며 자동으로 생성됨
+//        즉 부모객체의 fly메소드를 부르는 행위임
+//        필요없으니 주석처리완료
+//        super.fly()
+        println("${address} 살고있는 ${name}가 날아봅니다~ 구구!")
+    }
+}
+
+
+
 */
 
+/*
+open class Parent {
+    var hello: String = "안녕하세요"
+    fun sayHello(){
+        Log.d("inheritance", "${hello}")
+    }
+}
 
+class Child: Parent(){
+    fun myHello() {
+        hello = "Hello!"
+        sayHello()
+    }
+}
 
+ */
 
+/* 데이터 클래스 사용해보기
+data class UserData(var name: String, var age: Int){
+    init{
+        println("init은 프라이머리 생성자 초기화")
+        println("나는${name}~ 꿈을 꾸는 ${age}살 ${name}~")
+    }
+fun main(){
+    var name = "문어"
+    var age = 3
+}
+*/
 
+/*
+// 정의 - 주로 코드 블록(클래스 스코프)을 사용하지 않고 간단하게 작성합니다.
+data class UserData(val name: String, var age: Int)
+// 생성 - 일반 class의 생성자 함수를 호출하는 것과 동일합니다.
+var userData = UserData("Michael", 21)
 
+fun main() {
 
+// name은 val로 선언되었기 때문에 변경 불가능합니다.
+   // userData.name = "Sindy" // (X)
+// age는 var로 선언되었기 때문에 변경 가능합니다.
+    userData.age = 18 // (O)
+
+}
+*/
 
 //----------------메모----------------//
 //         다시 해볼 필요 있음!!!         //
@@ -296,7 +438,6 @@ override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 */
-
 
 /* 이것도 왜 안되는지 모르겠음 -> 이건 fun 이름을 main으로 바꾸면 됨
 fun export() {
